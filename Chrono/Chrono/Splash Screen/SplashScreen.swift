@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-
 struct SplashScreen: View {
-    
-    @State var isActive:Bool = false
+    @State var isActive: Bool = false
 
     var body: some View {
         VStack {
@@ -28,19 +26,24 @@ struct SplashScreen: View {
             }
         }
     }
-    
 }
 
 struct SplashView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color(hex: "7E51FF"), Color(hex: "0E1C9F")]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            
-            Image("Logo")
+            if colorScheme == .dark {
+                Color(hex: "121212")
+                    .ignoresSafeArea()
+            } else {
+                LinearGradient(gradient: Gradient(colors: [Color(hex: "7E51FF"), Color(hex: "0E1C9F")]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+            }
+
+            Image(colorScheme == .dark ? "LogoDark" : "Logo")
                 .padding()
                 .offset(x: 0, y: -40.0)
-                
         }
     }
 }
