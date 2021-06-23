@@ -34,14 +34,14 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             if colorScheme == .dark {
-                Color(hex: "121212")
+                Color("SplashScreen_DarkBg")
                     .ignoresSafeArea()
             } else {
-                LinearGradient(gradient: Gradient(colors: [Color(hex: "7E51FF"), Color(hex: "0E1C9F")]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [Color("SplashScreen_LightGrad1"), Color("SplashScreen_LightGrad2")]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
             }
 
-            Image(colorScheme == .dark ? "LogoDark" : "Logo")
+            Image("SplashScreen_Logo")
                 .padding()
                 .offset(x: 0, y: -40.0)
         }
